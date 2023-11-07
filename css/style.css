@@ -101,10 +101,37 @@ section.grid{
             grid-column: 1/span 2;
             }
     }
+    @media (prefers-color-scheme: dark) {
+        .label{
+            background-color: rgb(0, 0, 0);
+            color: orange;
+        }
+      }
+    @media (prefers-reduced-motion: reduce) {
+        a#top  {
+          animation: none;
+        }
+      }
+      
+      /*
+        If the browser understands the media query and the user
+        explicitly hasn't set a preference, then use animations on buttons.
+      */
+      @media (prefers-reduced-motion:   no-preference) {
+        a#top {
+          /* `vibrate` keyframes are defined elsewhere */
+          transition: scale 0.15s cubic-bezier(0.075, 0.82, 0.165, 1);
+          animation:PopUp  0.3s linear infinite both;
+        }
+        @keyframes PopUp {
+            0%{scale:100%}
+            50%{
+                scale:125%;
+            }
 
-
-
-
+            100%{scale:75%}
+        }
+    }
 
 
 
